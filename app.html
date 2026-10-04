@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Cozinha na Air Fryer — Área de Membros</title>
+<style>
+  :root{
+    --brand:#e8562a; --brand-d:#c23f18; --blue:#1565c0; --green:#2e7d32;
+    --ink:#2b2b35; --soft:#6b6b78; --line:#f0ddd2;
+    --bg:#fff6f0; --card:#ffffff; --radius:18px; --shadow:0 8px 24px rgba(226,63,24,.09);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:18px}
+  .hidden{display:none!important}
+  .auth-shell{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
+    background:radial-gradient(circle at 20% 10%,#ffe3d3,transparent 42%),radial-gradient(circle at 90% 85%,#ffe9bf,transparent 45%),var(--bg)}
+  .card{background:var(--card);border-radius:24px;box-shadow:var(--shadow);padding:30px;width:100%;max-width:410px;border:1px solid var(--line)}
+  .logo{font-size:42px;text-align:center}
+  h1{font-size:23px;margin:6px 0 2px;text-align:center}
+  .sub{color:var(--soft);text-align:center;font-size:14px;margin-bottom:18px}
+  label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px;color:var(--soft)}
+  input{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;font-size:15px;outline:none;background:#fff}
+  input:focus{border-color:var(--brand)}
+  .btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;background:var(--brand);color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:16px;transition:.15s}
+  .btn:hover{background:var(--brand-d)}
+  .btn.ghost{background:#fff;color:var(--brand);border:1.5px solid var(--brand);margin-top:10px}
+  .btn.blue{background:var(--blue)} .btn.blue:hover{filter:brightness(.92)}
+  .link{display:inline-block;color:var(--blue);font-size:13px;text-decoration:none;margin-top:14px;cursor:pointer;background:none;border:none}
+  .center{text-align:center}
+  .msg{padding:11px 13px;border-radius:10px;font-size:13.5px;margin-top:14px}
+  .msg.err{background:#fde7e3;color:#b3261e} .msg.ok{background:#e6f4ea;color:#1e6b33}
+  .topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .topbar .wrap{display:flex;align-items:center;gap:12px;padding:12px 18px}
+  .brand{font-weight:800;font-size:18px;color:var(--brand);display:flex;align-items:center;gap:8px}
+  .spacer{flex:1}
+  .who{font-size:12.5px;color:var(--soft);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .out{font-size:13px;color:var(--brand);background:none;border:1.5px solid var(--line);padding:7px 12px;border-radius:9px;cursor:pointer}
+  .hero{background:linear-gradient(135deg,#fff1e8,#ffe7cf);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:16px 0}
+  .hero h2{margin:0 0 4px;font-size:22px}
+  .hero p{margin:0;color:var(--soft);font-size:14px}
+  .search{margin:14px 0}
+  .search input{padding-left:40px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%236b6b78' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.3-4.3'/%3E%3C/svg%3E") no-repeat 13px center}
+  .prod-head{display:flex;align-items:center;gap:10px;margin:18px 0 10px}
+  .prod-head .em{font-size:26px}
+  .prod-head h3{margin:0;font-size:19px}
+  .prod-head .cnt{font-size:12px;color:#fff;background:var(--brand);padding:3px 9px;border-radius:20px;font-weight:700}
+  .books{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+  .book{position:relative;display:flex;gap:12px;align-items:flex-start;padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:pointer;transition:.12s;text-align:left}
+  .book:hover{border-color:var(--brand);box-shadow:0 6px 16px rgba(232,86,42,.12);transform:translateY(-2px)}
+  .book .be{width:46px;height:46px;border-radius:11px;background:#fff1ea;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .book .bt{font-size:15px;font-weight:700;line-height:1.25;margin-bottom:3px}
+  .book .bd{font-size:12.5px;color:var(--soft);line-height:1.4}
+  .book .open{display:inline-block;margin-top:7px;font-size:12px;font-weight:700;color:var(--brand)}
+  .tag{position:absolute;top:10px;right:10px;background:var(--green);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.3px}
+  .help{background:#fffaf6;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--soft);margin:16px 0}
+  .help b{color:var(--ink)}
+  .foot{color:var(--soft);font-size:12px;text-align:center;padding:26px 10px;line-height:1.7}
+  .spin{width:34px;height:34px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:sp 1s linear infinite;margin:40px auto}
+  @keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="s-loading" class="auth-shell"><div class="spin"></div></div>
+
+<!-- LOGIN -->
+<div id="s-login" class="auth-shell hidden"><div class="card">
+  <div class="logo">🍗</div>
+  <h1>Cozinha na Air Fryer</h1>
+  <div class="sub">Sua área de receitas para fazer agora</div>
+  <label>E-mail da compra</label>
+  <input id="li-email" type="email" placeholder="seu@email.com" autocomplete="email">
+  <label>Senha</label>
+  <input id="li-pass" type="password" placeholder="sua senha" autocomplete="current-password">
+  <button class="btn" onclick="onLogin()">Entrar</button>
+  <button class="btn ghost" onclick="show('signup')">Criar acesso (1ª vez)</button>
+  <button class="btn blue" onclick="onMagic()">📧 Entrar com link no e-mail (sem senha)</button>
+  <div class="center"><button class="link" onclick="show('forgot')">Esqueci minha senha</button></div>
+  <div id="li-msg"></div>
+  <div class="help" style="margin-top:18px">📧 Assim que sua compra é aprovada, seu acesso é liberado. É seu <b>primeiro acesso</b>? Clique em <b>Criar acesso</b> usando o <b>e-mail da compra</b>.</div>
+</div></div>
+
+<!-- SIGNUP -->
+<div id="s-signup" class="auth-shell hidden"><div class="card">
+  <div class="logo">✨</div>
+  <h1>Criar acesso</h1>
+  <div class="sub">Use o mesmo e-mail que você usou na compra</div>
+  <label>E-mail da compra</label>
+  <input id="su-email" type="email" placeholder="seu@email.com" autocomplete="email">
+  <label>Crie uma senha</label>
+  <input id="su-pass" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password">
+  <button class="btn" onclick="onSignup()">Criar e entrar</button>
+  <div class="center"><button class="link" onclick="show('login')">Já tenho acesso — Entrar</button></div>
+  <div id="su-msg"></div>
+</div></div>
+
+<!-- FORGOT -->
+<div id="s-forgot" class="auth-shell hidden"><div class="card">
+  <div class="logo">🔑</div>
+  <h1>Esqueci minha senha</h1>
+  <div class="sub">Enviamos um link pra você criar uma nova senha</div>
+  <label>Seu e-mail</label>
+  <input id="fg-email" type="email" placeholder="seu@email.com">
+  <button class="btn" onclick="onForgot()">Enviar link de redefinição</button>
+  <div class="center"><button class="link" onclick="show('login')">Voltar</button></div>
+  <div id="fg-msg"></div>
+</div></div>
+
+<!-- RECOVERY -->
+<div id="s-recovery" class="auth-shell hidden"><div class="card">
+  <div class="logo">🔒</div>
+  <h1>Criar nova senha</h1>
+  <div class="sub">Digite sua nova senha de acesso</div>
+  <label>Nova senha</label>
+  <input id="rc-pass" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password">
+  <button class="btn" onclick="onSavePassword()">Salvar e entrar</button>
+  <div id="rc-msg"></div>
+</div></div>
+
+<!-- NO ACCESS -->
+<div id="s-noaccess" class="auth-shell hidden"><div class="card center">
+  <div class="logo">🔎</div>
+  <h1>Não encontramos sua compra</h1>
+  <div class="sub">Você entrou, mas este e-mail ainda não tem acesso liberado.</div>
+  <div class="help" style="text-align:left">Verifique se entrou com o <b>mesmo e-mail da compra</b>. Se você acabou de comprar, pode levar alguns minutos. Comprou com outro e-mail? Fale com a gente.</div>
+  <a class="btn" id="na-buy" href="#" target="_blank" rel="noopener">Quero as receitas</a>
+  <button class="btn ghost" onclick="doLogout()">Entrar com outro e-mail</button>
+</div></div>
+
+<!-- APP -->
+<div id="s-app" class="hidden">
+  <div class="topbar"><div class="wrap">
+    <div class="brand">🍗 Cozinha na Air Fryer</div>
+    <div class="spacer"></div>
+    <div class="who" id="app-who"></div>
+    <button class="out" onclick="doLogout()">Sair</button>
+  </div></div>
+  <div class="wrap">
+    <div class="hero">
+      <h2>Bem-vindo(a) à sua cozinha! 👩‍🍳</h2>
+      <p>Escolha um livro, abra no celular ou no PC e <b>comece a cozinhar hoje</b>. Receitas práticas, baratas e que a família pede de novo. 🍽️</p>
+      <div style="margin-top:10px;display:inline-block;background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 14px;font-size:13px;font-weight:700;color:var(--green)">✨ Receitas novas toda semana!</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:4px 0 2px">
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 15px">
+        <summary style="cursor:pointer;font-weight:700;font-size:14px">📱 Como abrir e cozinhar</summary>
+        <p style="margin:9px 0 0;font-size:13.5px;color:var(--soft);line-height:1.6">Toque no livro e o PDF abre na hora. No <b>celular</b>, deixe a tela ligada enquanto cozinha. No <b>PC</b>, abra em tela cheia. 💡 Dá pra buscar a receita pelo nome no campo de busca.</p>
+      </details>
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 15px">
+        <summary style="cursor:pointer;font-weight:700;font-size:14px">🔥 Dica de tempo e temperatura</summary>
+        <p style="margin:9px 0 0;font-size:13.5px;color:var(--soft);line-height:1.6">As receitas servem pra <b>qualquer marca ou tamanho</b> de air fryer. Se a sua for menor, faça em 2 levas. Pré-aqueça 3 min e, na dúvida, confira 2 min antes do tempo pra não passar do ponto.</p>
+      </details>
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 15px">
+        <summary style="cursor:pointer;font-weight:700;font-size:14px">🖨️ Baixar, imprimir e guardar</summary>
+        <p style="margin:9px 0 0;font-size:13.5px;color:var(--soft);line-height:1.6">Baixe o PDF e guarde no seu aparelho — assim acessa quando quiser, mesmo sem internet. Dá pra imprimir as favoritas e colar na geladeira (no PC: <b>Ctrl + P</b>).</p>
+      </details>
+    </div>
+    <div class="search"><input id="q" type="text" placeholder="Buscar receita... (ex: frango, bolo, salada, sobremesa)" oninput="renderCatalog()"></div>
+    <div id="catalog"></div>
+    <div class="help">💡 <b>Dica:</b> cada livro abre em PDF pronto pra ler no celular ou imprimir. O acesso é pessoal e intransferível — não compartilhe seu login.</div>
+    <div class="foot">
+      <b style="color:var(--brand)">🔒 Seu acesso é pessoal e intransferível.</b> Não compartilhe seu login e senha com outras pessoas.<br>
+      O compartilhamento de conta pode resultar no <b>bloqueio imediato do acesso, sem reembolso</b>.<br><br>
+      Cozinha na Air Fryer — uso pessoal. Todo o conteúdo é protegido por <b>direitos autorais</b>: proibido copiar, revender ou redistribuir.<br>
+      Dúvidas no acesso? <b id="foot-sup"></b>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ CATALOGO (fallback embutido) ============ */
+window.CATALOG_DATA = {"products":[{"product":"airfryer","name":"Cozinha na Air Fryer","emoji":"🍽️","desc":"Sua biblioteca completa de receitas para air fryer.","categories":[
+  {"name":"+365 Receitas na Air Fryer","emoji":"🍗","desc":"O livro principal — 365 receitas práticas, saudáveis e para toda a família.","tag":"PRINCIPAL","path":"airfryer/365-receitas-air-fryer.pdf"},
+  {"name":"+100 Receitas na Air Fryer","emoji":"🍟","desc":"100 receitas extras para variar o cardápio do dia a dia.","path":"airfryer/100-receitas-air-fryer.pdf"},
+  {"name":"70 Sobremesas na Air Fryer","emoji":"🍰","desc":"Bolos, doces e sobremesas feitos direto na air fryer.","path":"airfryer/70-sobremesas-air-fryer.pdf"},
+  {"name":"80 Saladas no Pote","emoji":"🥗","desc":"Saladas fit práticas, bonitas e fáceis de levar.","path":"airfryer/80-saladas-no-pote.pdf"},
+  {"name":"Receitas com Carne Moída","emoji":"🥩","desc":"Pratos econômicos e rápidos com carne moída.","path":"airfryer/receitas-com-carne-moida.pdf"},
+  {"name":"75 Petiscos e Biscoitos sem Glúten","emoji":"🧁","desc":"Petiscos e biscoitos sem glúten para qualquer hora.","path":"airfryer/75-petiscos-biscoitos-sem-gluten.pdf"},
+  {"name":"Cardápio de 30 Dias","emoji":"📅","desc":"Um mês inteiro de refeições já planejadas para você.","path":"airfryer/cardapio-30-dias.pdf"},
+  {"name":"Guia de Substituições Inteligentes","emoji":"🔁","desc":"Troque ingredientes por versões mais saudáveis sem perder o sabor.","path":"airfryer/guia-substituicoes-inteligentes.pdf"}
+]}]};
+
+/* ============ CONFIG ============ */
+const CFG = {
+  SUPABASE_URL: "https://nwpoweamwnjqbgnwpusq.supabase.co",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53cG93ZWFtd25qcWJnbndwdXNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMTM1NTQsImV4cCI6MjA5NjY4OTU1NH0.X4wYz5hO-zB7Lxiy1Tl-t38Mp1n-c978L-iw7JMWYNQ",
+  BUCKET: "airfryer",
+  CATALOG_URL: "https://nwpoweamwnjqbgnwpusq.supabase.co/functions/v1/airfryer-catalog",
+  CHECKOUT_URL: "https://airfryer-receitas.vercel.app",
+  SUPPORT: "WhatsApp de suporte"
+};
+const PRODUCT_KEYS = ["airfryer"];
+
+let sb=null, CATALOG=null, OWNED=new Set();
+
+function show(id){
+  ["loading","login","signup","forgot","recovery","noaccess","app"].forEach(s=>{
+    document.getElementById("s-"+s).classList.toggle("hidden", s!==id);
+  });
+}
+function setMsg(el,txt,cls){const e=document.getElementById(el);e.innerHTML=txt?`<div class="msg ${cls}">${txt}</div>`:"";}
+
+function loadSb(){return new Promise((res,rej)=>{
+  if(window.supabase){return res();}
+  const urls=["https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2","https://unpkg.com/@supabase/supabase-js@2","https://cdnjs.cloudflare.com/ajax/libs/supabase-js/2.39.3/supabase.min.js"];
+  let i=0;
+  (function next(){
+    if(i>=urls.length) return rej(new Error("cdn"));
+    const sc=document.createElement("script"); sc.src=urls[i++];
+    sc.onload=()=>res(); sc.onerror=next; document.head.appendChild(sc);
+  })();
+});}
+
+async function boot(){
+  document.getElementById("na-buy").href=CFG.CHECKOUT_URL;
+  document.getElementById("foot-sup").textContent=CFG.SUPPORT;
+  try{ await loadSb(); }catch(e){ show("login"); return; }
+  sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);
+  sb.auth.onAuthStateChange((event)=>{ if(event==="PASSWORD_RECOVERY") show("recovery"); });
+  if(location.hash.indexOf("type=recovery")>-1){ show("recovery"); return; }
+  const {data}=await sb.auth.getSession();
+  if(data&&data.session){ gate(data.session.user); } else { show("login"); }
+}
+
+async function onLogin(){
+  const email=val("li-email"), pass=val("li-pass");
+  if(!email||!pass) return setMsg("li-msg","Preencha e-mail e senha.","err");
+  setMsg("li-msg","Entrando...","ok");
+  const {data,error}=await sb.auth.signInWithPassword({email,password:pass});
+  if(error) return setMsg("li-msg","E-mail ou senha incorretos. Primeira vez? Use <b>Criar acesso</b>.","err");
+  gate(data.user);
+}
+async function onSignup(){
+  const email=val("su-email"), pass=val("su-pass");
+  if(!email||pass.length<6) return setMsg("su-msg","Informe o e-mail e uma senha de 6+ caracteres.","err");
+  setMsg("su-msg","Criando seu acesso...","ok");
+  const {data,error}=await sb.auth.signUp({email,password:pass});
+  if(error&&/registered|already|exist/i.test(error.message)){
+    const r=await sb.auth.signInWithPassword({email,password:pass});
+    if(r.data&&r.data.session) return gate(r.data.user);
+    return setMsg("su-msg","Você já tem conta com esse e-mail. Volte e use <b>Entrar</b> ou <b>Esqueci a senha</b>.","err");
+  }
+  if(error) return setMsg("su-msg","Não consegui criar agora. Tente de novo.","err");
+  if(data.session) return gate(data.user);
+  const r=await sb.auth.signInWithPassword({email,password:pass});
+  if(r.data&&r.data.session) gate(r.data.user); else setMsg("su-msg","Acesso criado! Volte e clique em Entrar.","ok");
+}
+async function onMagic(){
+  const email=val("li-email");
+  if(!email) return setMsg("li-msg","Digite seu e-mail acima primeiro.","err");
+  const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname}});
+  setMsg("li-msg", error?"Tente de novo em 1 minuto.":"📧 Enviamos um link de acesso pro seu e-mail. Abra a caixa de entrada (e o spam).", error?"err":"ok");
+}
+async function onForgot(){
+  const email=val("fg-email");
+  if(!email) return setMsg("fg-msg","Digite seu e-mail.","err");
+  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
+  setMsg("fg-msg", error?"Tente de novo em 1 minuto.":"📧 Link enviado! Veja a caixa de entrada e o spam.", error?"err":"ok");
+}
+async function onSavePassword(){
+  const p=val("rc-pass");
+  if(p.length<6) return setMsg("rc-msg","Senha de 6+ caracteres.","err");
+  const {data,error}=await sb.auth.updateUser({password:p});
+  if(error) return setMsg("rc-msg","Link expirado — peça um novo em 'Esqueci minha senha'.","err");
+  history.replaceState(null,"",location.pathname);
+  gate(data.user);
+}
+async function doLogout(){ await sb.auth.signOut(); OWNED=new Set(); show("login"); }
+
+async function gate(user){
+  show("loading");
+  const {data,error}=await sb.from("entitlements").select("product").eq("status","active").in("product",PRODUCT_KEYS);
+  OWNED=new Set((data||[]).map(r=>r.product));
+  if(error||OWNED.size===0){ show("noaccess"); return; }
+  document.getElementById("app-who").textContent=user.email;
+  if(!CATALOG){ try{ CATALOG = await (await fetch(CFG.CATALOG_URL+"?v="+Date.now())).json(); }catch(e){ CATALOG = window.CATALOG_DATA || {products:[]}; } if(!CATALOG.products||!CATALOG.products.length) CATALOG = window.CATALOG_DATA || CATALOG; }
+  renderCatalog();
+  show("app");
+}
+
+function renderCatalog(){
+  const q=(val("q")||"").toLowerCase().trim();
+  const root=document.getElementById("catalog"); root.innerHTML="";
+  (CATALOG.products||[]).forEach(prod=>{
+    if(!OWNED.has(prod.product)) return;
+    const books=(prod.categories||[]).filter(c=>!q || (c.name||"").toLowerCase().includes(q) || (c.desc||"").toLowerCase().includes(q));
+    if(!books.length) return;
+    const cells=books.map(c=>`<button class="book" onclick='openFile(${JSON.stringify(c.path)})'>
+        ${c.tag?`<span class="tag">${esc(c.tag)}</span>`:""}
+        <span class="be">${c.emoji||"📖"}</span>
+        <span><span class="bt">${esc(c.name)}</span><span class="bd">${esc(c.desc||"")}</span><span class="open">Abrir livro 📖</span></span>
+      </button>`).join("");
+    const head=`<div class="prod-head"><span class="em">${prod.emoji||"🍽️"}</span><h3>${esc(prod.name)}</h3><span class="cnt">${books.length} livros</span></div>`;
+    root.insertAdjacentHTML("beforeend", head+`<div class="books">${cells}</div>`);
+  });
+  if(!root.children.length) root.innerHTML='<div class="help">Nenhuma receita encontrada pra essa busca.</div>';
+}
+
+async function openFile(path){
+  const w=window.open("","_blank");
+  try{
+    const marker="/object/public/"+CFG.BUCKET+"/";
+    const i=path.indexOf(marker); const p=i>-1?path.slice(i+marker.length):path;
+    const {data,error}=await sb.storage.from(CFG.BUCKET).createSignedUrl(p,3600);
+    if(error||!data||!data.signedUrl) throw error||new Error("sem permissao");
+    if(w) w.location.href=data.signedUrl;
+  }catch(e){ if(w) w.close(); alert("Não consegui abrir agora. Atualize a página e tente de novo."); }
+}
+
+function val(id){return (document.getElementById(id).value||"").trim();}
+function esc(s){return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+boot();
+</script>
+</body>
+</html>

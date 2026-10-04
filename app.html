@@ -7,16 +7,16 @@
 <title>Cozinha na Air Fryer — Área de Membros</title>
 <style>
   :root{
-    --brand:#e8562a; --brand-d:#c23f18; --blue:#1565c0; --green:#2e7d32;
-    --ink:#2b2b35; --soft:#6b6b78; --line:#f0ddd2;
-    --bg:#fff6f0; --card:#ffffff; --radius:18px; --shadow:0 8px 24px rgba(226,63,24,.09);
+    --brand:#2e7d32; --brand-d:#1b5e20; --blue:#1565c0; --green:#2e7d32; --accent:#e5892a;
+    --ink:#243024; --soft:#5f6b5f; --line:#e2ecdd;
+    --bg:#f4f8f1; --card:#ffffff; --radius:18px; --shadow:0 8px 24px rgba(46,125,50,.10);
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
   .wrap{max-width:1080px;margin:0 auto;padding:18px}
   .hidden{display:none!important}
   .auth-shell{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
-    background:radial-gradient(circle at 20% 10%,#ffe3d3,transparent 42%),radial-gradient(circle at 90% 85%,#ffe9bf,transparent 45%),var(--bg)}
+    background:radial-gradient(circle at 20% 10%,#d8ecd4,transparent 42%),radial-gradient(circle at 90% 85%,#eaf3d6,transparent 45%),var(--bg)}
   .card{background:var(--card);border-radius:24px;box-shadow:var(--shadow);padding:30px;width:100%;max-width:410px;border:1px solid var(--line)}
   .logo{font-size:42px;text-align:center}
   h1{font-size:23px;margin:6px 0 2px;text-align:center}
@@ -38,7 +38,7 @@
   .spacer{flex:1}
   .who{font-size:12.5px;color:var(--soft);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .out{font-size:13px;color:var(--brand);background:none;border:1.5px solid var(--line);padding:7px 12px;border-radius:9px;cursor:pointer}
-  .hero{background:linear-gradient(135deg,#fff1e8,#ffe7cf);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:16px 0}
+  .hero{background:linear-gradient(135deg,#eef6ea,#e3f0db);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:16px 0}
   .hero h2{margin:0 0 4px;font-size:22px}
   .hero p{margin:0;color:var(--soft);font-size:14px}
   .search{margin:14px 0}
@@ -49,23 +49,25 @@
   .prod-head .cnt{font-size:12px;color:#fff;background:var(--brand);padding:3px 9px;border-radius:20px;font-weight:700}
   .books{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
   .book{position:relative;display:flex;gap:12px;align-items:flex-start;padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:pointer;transition:.12s;text-align:left}
-  .book:hover{border-color:var(--brand);box-shadow:0 6px 16px rgba(232,86,42,.12);transform:translateY(-2px)}
-  .book .be{width:46px;height:46px;border-radius:11px;background:#fff1ea;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .book:hover{border-color:var(--brand);box-shadow:0 6px 16px rgba(46,125,50,.14);transform:translateY(-2px)}
+  .book .be{width:52px;height:60px;border-radius:9px;background:#eaf3e4;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}
+  .book .be img{width:100%;height:100%;object-fit:cover}
   .book .bt{font-size:15px;font-weight:700;line-height:1.25;margin-bottom:3px}
   .book .bd{font-size:12.5px;color:var(--soft);line-height:1.4}
   .book .open{display:inline-block;margin-top:7px;font-size:12px;font-weight:700;color:var(--brand)}
-  .tag{position:absolute;top:10px;right:10px;background:var(--green);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.3px}
-  .feat{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,#e8562a,#c23f18);color:#fff;border-radius:20px;padding:22px;cursor:pointer;box-shadow:0 10px 28px rgba(226,63,24,.28);margin:4px 0 8px;transition:.15s;position:relative;overflow:hidden}
-  .feat:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(226,63,24,.36)}
+  .tag{position:absolute;top:10px;right:10px;background:var(--accent);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.3px}
+  .feat{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,#2e7d32,#1b5e20);color:#fff;border-radius:20px;padding:22px;cursor:pointer;box-shadow:0 10px 28px rgba(27,94,32,.28);margin:4px 0 8px;transition:.15s;position:relative;overflow:hidden}
+  .feat:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(27,94,32,.36)}
   .feat-badge{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.22);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;letter-spacing:.5px}
-  .feat-emoji{width:86px;height:86px;border-radius:18px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:46px;flex-shrink:0}
+  .feat-emoji{width:82px;height:102px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:46px;flex-shrink:0;overflow:hidden}
+  .feat-emoji img{width:100%;height:100%;object-fit:cover}
   .feat-body{flex:1}
   .feat-title{font-size:23px;font-weight:800;line-height:1.15;margin-bottom:5px}
   .feat-desc{font-size:14px;opacity:.95;line-height:1.4;margin-bottom:12px;max-width:560px}
   .feat-btn{display:inline-block;background:#fff;color:var(--brand);font-weight:800;font-size:14px;padding:9px 18px;border-radius:10px}
   .sechead{display:flex;align-items:center;gap:10px;margin:22px 0 10px;font-size:15px;font-weight:800;color:var(--ink)}
   .sechead .cnt{font-size:12px;color:#fff;background:var(--soft);padding:3px 9px;border-radius:20px;font-weight:700}
-  @media(max-width:560px){.feat{flex-direction:column;text-align:center}.feat-emoji{width:66px;height:66px;font-size:36px}.feat-desc{margin:0 auto 12px}}
+  @media(max-width:560px){.feat{flex-direction:column;text-align:center}.feat-emoji{width:78px;height:98px;font-size:36px}.feat-desc{margin:0 auto 12px}}
   .help{background:#fffaf6;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--soft);margin:16px 0}
   .help b{color:var(--ink)}
   .foot{color:var(--soft);font-size:12px;text-align:center;padding:26px 10px;line-height:1.7}
@@ -186,19 +188,19 @@
 <script>
 /* ============ CATALOGO (fallback embutido) ============ */
 window.CATALOG_DATA = {"products":[{"product":"airfryer","name":"Cozinha na Air Fryer","emoji":"🍽️","desc":"Sua biblioteca completa de receitas para air fryer.","categories":[
-  {"name":"+365 Receitas na Air Fryer","emoji":"🍗","desc":"O livro principal — 365 receitas práticas, saudáveis e para toda a família.","tag":"PRINCIPAL","path":"airfryer/365-receitas-air-fryer.pdf"},
+  {"name":"+365 Receitas na Air Fryer","emoji":"🍗","desc":"O livro principal — 365 receitas práticas, saudáveis e para toda a família.","tag":"PRINCIPAL","cover":"https://nwpoweamwnjqbgnwpusq.supabase.co/storage/v1/object/public/site/airfryer-covers/365.jpg","path":"airfryer/365-receitas-air-fryer.pdf"},
   {"name":"+100 Receitas na Air Fryer","emoji":"🍟","desc":"100 receitas extras para variar o cardápio do dia a dia.","path":"airfryer/100-receitas-air-fryer.pdf"},
   {"name":"70 Sobremesas na Air Fryer","emoji":"🍰","desc":"Bolos, doces e sobremesas feitos direto na air fryer.","path":"airfryer/70-sobremesas-air-fryer.pdf"},
   {"name":"80 Saladas no Pote","emoji":"🥗","desc":"Saladas fit práticas, bonitas e fáceis de levar.","path":"airfryer/80-saladas-no-pote.pdf"},
   {"name":"Receitas com Carne Moída","emoji":"🥩","desc":"Pratos econômicos e rápidos com carne moída.","path":"airfryer/receitas-com-carne-moida.pdf"},
   {"name":"75 Petiscos e Biscoitos sem Glúten","emoji":"🧁","desc":"Petiscos e biscoitos sem glúten para qualquer hora.","path":"airfryer/75-petiscos-biscoitos-sem-gluten.pdf"},
   {"name":"Guia de Substituições Inteligentes","emoji":"🔁","desc":"Troque ingredientes por versões mais saudáveis sem perder o sabor.","path":"airfryer/guia-substituicoes-inteligentes.pdf"},
-  {"name":"Cardápio de 30 Dias","emoji":"📅","desc":"Um mês inteiro de refeições já planejadas para você.","tag":"BÔNUS","path":"airfryer/cardapio-30-dias.pdf"},
-  {"name":"Lista de Compras Inteligente","emoji":"🛒","desc":"Lista por categorias + planejador de cardápio. Gaste menos e não esqueça nada.","tag":"BÔNUS","path":"airfryer/bonus-lista-de-compras.pdf"},
-  {"name":"Guia de Congelamento e Reaquecimento","emoji":"🧊","desc":"Cozinhe uma vez, coma a semana toda — sem perder a crocância.","tag":"BÔNUS","path":"airfryer/bonus-guia-congelamento.pdf"},
-  {"name":"30 Temperos e Molhos","emoji":"🧂","desc":"O segredo que transforma um prato comum no que todo mundo pede a receita.","tag":"BÔNUS","path":"airfryer/bonus-30-temperos-e-molhos.pdf"},
-  {"name":"50 Receitas em Até 15 Minutos","emoji":"⏱️","desc":"Da fome à mesa em 15 minutos, sem bagunça.","tag":"BÔNUS","path":"airfryer/bonus-50-receitas-15-minutos.pdf"},
-  {"name":"+40 Jantares Românticos para Casais","emoji":"🕯️","desc":"Um jantar de restaurante feito na sua air fryer, sem sair de casa.","tag":"BÔNUS","path":"airfryer/bonus-40-jantares-romanticos.pdf"}
+  {"name":"Cardápio de 30 Dias","emoji":"📅","desc":"Um mês inteiro de refeições já planejadas para você.","tag":"BÔNUS","cover":"https://nwpoweamwnjqbgnwpusq.supabase.co/storage/v1/object/public/site/airfryer-covers/cardapio.jpg","path":"airfryer/cardapio-30-dias.pdf"},
+  {"name":"Lista de Compras Inteligente","emoji":"🛒","desc":"Lista por categorias + planejador de cardápio. Gaste menos e não esqueça nada.","tag":"BÔNUS","cover":"https://nwpoweamwnjqbgnwpusq.supabase.co/storage/v1/object/public/site/airfryer-covers/lista-compras.jpg","path":"airfryer/bonus-lista-de-compras.pdf"},
+  {"name":"Guia de Congelamento e Reaquecimento","emoji":"🧊","desc":"Cozinhe uma vez, coma a semana toda — sem perder a crocância.","tag":"BÔNUS","cover":"https://nwpoweamwnjqbgnwpusq.supabase.co/storage/v1/object/public/site/airfryer-covers/congelamento.jpg","path":"airfryer/bonus-guia-congelamento.pdf"},
+  {"name":"30 Temperos e Molhos","emoji":"🧂","desc":"O segredo que transforma um prato comum no que todo mundo pede a receita.","tag":"BÔNUS","cover":"https://nwpoweamwnjqbgnwpusq.supabase.co/storage/v1/object/public/site/airfryer-covers/temperos.jpg","path":"airfryer/bonus-30-temperos-e-molhos.pdf"},
+  {"name":"50 Receitas em Até 15 Minutos","emoji":"⏱️","desc":"Da fome à mesa em 15 minutos, sem bagunça.","tag":"BÔNUS","cover":"https://nwpoweamwnjqbgnwpusq.supabase.co/storage/v1/object/public/site/airfryer-covers/15min.jpg","path":"airfryer/bonus-50-receitas-15-minutos.pdf"},
+  {"name":"+40 Jantares Românticos para Casais","emoji":"🕯️","desc":"Um jantar de restaurante feito na sua air fryer, sem sair de casa.","tag":"BÔNUS","cover":"https://nwpoweamwnjqbgnwpusq.supabase.co/storage/v1/object/public/site/airfryer-covers/jantares.jpg","path":"airfryer/bonus-40-jantares-romanticos.pdf"}
 ]}]};
 
 /* ============ CONFIG ============ */
@@ -302,7 +304,7 @@ async function gate(user){
 function bookCard(c){
   return `<button class="book" onclick='openFile(${JSON.stringify(c.path)})'>
       ${c.tag?`<span class="tag">${esc(c.tag)}</span>`:""}
-      <span class="be">${c.emoji||"📖"}</span>
+      <span class="be">${c.cover?`<img src="${esc(c.cover)}" alt="" loading="lazy">`:(c.emoji||"📖")}</span>
       <span><span class="bt">${esc(c.name)}</span><span class="bd">${esc(c.desc||"")}</span><span class="open">Abrir livro 📖</span></span>
     </button>`;
 }
@@ -319,7 +321,7 @@ function renderCatalog(){
       root.insertAdjacentHTML("beforeend",
         `<div class="feat" onclick='openFile(${JSON.stringify(principal.path)})'>
           <div class="feat-badge">⭐ LIVRO PRINCIPAL</div>
-          <div class="feat-emoji">${principal.emoji||"🍗"}</div>
+          <div class="feat-emoji">${principal.cover?`<img src="${esc(principal.cover)}" alt="">`:(principal.emoji||"🍗")}</div>
           <div class="feat-body">
             <div class="feat-title">${esc(principal.name)}</div>
             <div class="feat-desc">${esc(principal.desc||"")}</div>

@@ -55,6 +55,17 @@
   .book .bd{font-size:12.5px;color:var(--soft);line-height:1.4}
   .book .open{display:inline-block;margin-top:7px;font-size:12px;font-weight:700;color:var(--brand)}
   .tag{position:absolute;top:10px;right:10px;background:var(--green);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.3px}
+  .feat{display:flex;gap:18px;align-items:center;background:linear-gradient(135deg,#e8562a,#c23f18);color:#fff;border-radius:20px;padding:22px;cursor:pointer;box-shadow:0 10px 28px rgba(226,63,24,.28);margin:4px 0 8px;transition:.15s;position:relative;overflow:hidden}
+  .feat:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(226,63,24,.36)}
+  .feat-badge{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.22);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;letter-spacing:.5px}
+  .feat-emoji{width:86px;height:86px;border-radius:18px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:46px;flex-shrink:0}
+  .feat-body{flex:1}
+  .feat-title{font-size:23px;font-weight:800;line-height:1.15;margin-bottom:5px}
+  .feat-desc{font-size:14px;opacity:.95;line-height:1.4;margin-bottom:12px;max-width:560px}
+  .feat-btn{display:inline-block;background:#fff;color:var(--brand);font-weight:800;font-size:14px;padding:9px 18px;border-radius:10px}
+  .sechead{display:flex;align-items:center;gap:10px;margin:22px 0 10px;font-size:15px;font-weight:800;color:var(--ink)}
+  .sechead .cnt{font-size:12px;color:#fff;background:var(--soft);padding:3px 9px;border-radius:20px;font-weight:700}
+  @media(max-width:560px){.feat{flex-direction:column;text-align:center}.feat-emoji{width:66px;height:66px;font-size:36px}.feat-desc{margin:0 auto 12px}}
   .help{background:#fffaf6;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--soft);margin:16px 0}
   .help b{color:var(--ink)}
   .foot{color:var(--soft);font-size:12px;text-align:center;padding:26px 10px;line-height:1.7}
@@ -288,20 +299,39 @@ async function gate(user){
   show("app");
 }
 
+function bookCard(c){
+  return `<button class="book" onclick='openFile(${JSON.stringify(c.path)})'>
+      ${c.tag?`<span class="tag">${esc(c.tag)}</span>`:""}
+      <span class="be">${c.emoji||"📖"}</span>
+      <span><span class="bt">${esc(c.name)}</span><span class="bd">${esc(c.desc||"")}</span><span class="open">Abrir livro 📖</span></span>
+    </button>`;
+}
 function renderCatalog(){
   const q=(val("q")||"").toLowerCase().trim();
   const root=document.getElementById("catalog"); root.innerHTML="";
   (CATALOG.products||[]).forEach(prod=>{
     if(!OWNED.has(prod.product)) return;
-    const books=(prod.categories||[]).filter(c=>!q || (c.name||"").toLowerCase().includes(q) || (c.desc||"").toLowerCase().includes(q));
-    if(!books.length) return;
-    const cells=books.map(c=>`<button class="book" onclick='openFile(${JSON.stringify(c.path)})'>
-        ${c.tag?`<span class="tag">${esc(c.tag)}</span>`:""}
-        <span class="be">${c.emoji||"📖"}</span>
-        <span><span class="bt">${esc(c.name)}</span><span class="bd">${esc(c.desc||"")}</span><span class="open">Abrir livro 📖</span></span>
-      </button>`).join("");
-    const head=`<div class="prod-head"><span class="em">${prod.emoji||"🍽️"}</span><h3>${esc(prod.name)}</h3><span class="cnt">${books.length} livros</span></div>`;
-    root.insertAdjacentHTML("beforeend", head+`<div class="books">${cells}</div>`);
+    const all=(prod.categories||[]).filter(c=>!q || (c.name||"").toLowerCase().includes(q) || (c.desc||"").toLowerCase().includes(q));
+    if(!all.length) return;
+    const principal=all.find(c=>(c.tag||"")==="PRINCIPAL");
+    const rest=all.filter(c=>c!==principal);
+    if(principal){
+      root.insertAdjacentHTML("beforeend",
+        `<div class="feat" onclick='openFile(${JSON.stringify(principal.path)})'>
+          <div class="feat-badge">⭐ LIVRO PRINCIPAL</div>
+          <div class="feat-emoji">${principal.emoji||"🍗"}</div>
+          <div class="feat-body">
+            <div class="feat-title">${esc(principal.name)}</div>
+            <div class="feat-desc">${esc(principal.desc||"")}</div>
+            <span class="feat-btn">▶ Abrir agora</span>
+          </div>
+        </div>`);
+    }
+    if(rest.length){
+      root.insertAdjacentHTML("beforeend",
+        `<div class="sechead"><span>📚 Mais livros e bônus da sua biblioteca</span><span class="cnt">${rest.length}</span></div>`
+        + `<div class="books">${rest.map(bookCard).join("")}</div>`);
+    }
   });
   if(!root.children.length) root.innerHTML='<div class="help">Nenhuma receita encontrada pra essa busca.</div>';
 }

@@ -311,4 +311,6 @@ Você não precisa de outra air fryer. Você precisa <b>saber o que fazer nela</
 var CK={"basica":"https://pay.cakto.com.br/3cwrki2_1168649","super":"https://pay.cakto.com.br/3587wf4_1168661"};
 document.querySelectorAll('a[data-checkout]').forEach(function(a){var k=a.getAttribute('data-checkout');a.href=CK[k]||'#';a.addEventListener('click',function(){try{fbq('track','InitiateCheckout');}catch(e){}});});
 </script>
+
+<a id="ja-comprou-acesso" href="https://airfryer-receitas.vercel.app/app.html" style="position:fixed;bottom:16px;right:16px;z-index:99999;background:#2e7d32;color:#fff;padding:12px 18px;border-radius:30px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25);font-family:system-ui,sans-serif">✅ Já comprou? Acesse aqui</a>
 </body></html>
